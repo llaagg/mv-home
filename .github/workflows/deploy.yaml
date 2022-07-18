@@ -1,0 +1,39 @@
+name: Build and publish
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'v*'
+env:
+  PROJECT_NAME: "Home"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.100
+    - name: Install dependencies
+      run: dotnet restore ${{env.PROJECT_NAME}}
+    - name: Dotnet build dll
+      run: dotnet publish --configuration Release --no-restore -o build ${{env.PROJECT_NAME}}
+    - name: Publish action artefact
+      uses: actions/upload-artifact@v2
+      with:
+        name: watch-artifact
+        path: build/${{env.PROJECT_NAME}}.dll
+
+    - name: Release to github
+      uses: docker://antonyurchenko/git-release:latest
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        DRAFT_RELEASE: "false"
+        PRE_RELEASE: "false"
+        CHANGELOG_FILE: "CHANGELOG.md"
+        ALLOW_EMPTY_CHANGELOG: "true"
+      with:
+        args: |
+            build/${{env.PROJECT_NAME}}.dll
