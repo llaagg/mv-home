@@ -1,9 +1,3 @@
 {
-    "e": {},
-    "r": {
-        "s": {
-            "description": "storage",
-            "bin": "llaagg/mv-home/artefact-bin-release"
-        }
-    }
+    "e": {}
 }
