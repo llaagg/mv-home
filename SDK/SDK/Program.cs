@@ -1,2 +1,6 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿var manifest = new Home.HomeManifest();
+
+
+MV.Client.MVClient c = new MV.Client.MVClient();
+await c.Init(manifest.Definition());
+

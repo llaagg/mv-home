@@ -1,12 +1,13 @@
 ﻿namespace Home;
 
 using System.Threading.Tasks;
+using MV.Forms;
 using MV.Interfaces;
 using MV.Models;
 
 public class HomeManifest : IManifest, IVerse
 {
-    private IMetaVerse ctx;
+    private IMetaVerse? ctx;
 
     public VerseDefinition Definition()
     {
@@ -37,7 +38,7 @@ public class HomeManifest : IManifest, IVerse
 
     public Task Start()
     {
-        this.ctx.Show(new Form());
+        this.ctx.Show(new Frame());
         return Task.CompletedTask;
     }
 
