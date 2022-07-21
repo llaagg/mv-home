@@ -1,10 +1,49 @@
 ﻿namespace Home;
-using MV.Base;
 
-public class HomeManifest : BaseManifest
+using System.Threading.Tasks;
+using MV.Interfaces;
+using MV.Models;
+
+public class HomeManifest : IManifest, IVerse
 {
-    public override string OnGetName()
+    private IMetaVerse ctx;
+
+    public VerseDefinition Definition()
     {
-        return "Home";
+        return new VerseDefinition()
+        {
+            E=new List<VerseReference>()
+            {
+                new VerseReference(){
+                    GH="no-where",
+                    N= '0',
+                    Name = new I18NString("Watch")
+                },
+            },
+            Name = new ("Hello world")
+        };
+    }
+
+    public Task Init(IMetaVerse context)
+    {
+        this.ctx = context;
+        return Task.CompletedTask;
+    }
+
+    public Task Loop()
+    {
+        return Task.CompletedTask;
+    }
+
+    public Task Start()
+    {
+        this.ctx.Show(new Form());
+        return Task.CompletedTask;
+    }
+
+    public IVerse Verse()
+    {
+        return this;
     }
 }
+

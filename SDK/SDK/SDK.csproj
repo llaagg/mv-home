@@ -1,17 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Home\Home.csproj" />
+    <ProjectReference Include="..\..\..\mv\clients\MV.Ide\MV.Ide.csproj" />
+  </ItemGroup>
+
   <PropertyGroup>
+    <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="MV" Version="0.9.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\MV\libs\MV\MV.csproj" />
-  </ItemGroup>
 
 </Project>
