@@ -9,7 +9,7 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/SDK/SDK/bin/Debug/net6.0/SDK.dll",
+            "program": "${workspaceFolder}/SDK/SDK/bin/Debug/net6.0-windows/SDK.dll",
             "args": [],
             "cwd": "${workspaceFolder}/SDK/SDK",
             "console": "externalTerminal",
