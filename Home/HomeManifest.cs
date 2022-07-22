@@ -41,12 +41,22 @@ public class HomeManifest : IManifest, IVerse
         //1. create UI
         //2. ask to show it
 
+        
+        
+
         var f = new VFrame();
-        f.Add(new Label("Ala"));
+        f.Add(new Label("Hello world"));
         f.Add(new Label("ma"));
         f.Add(new Label("kota"));
-
+        f.Add(new Button("Zed"));
+        var bt = new Button("z");
+        bt.Clicked+=()=>{
+            Console.WriteLine("ok");
+        };
+        f.Add(bt);
+        
         this.ctx.Show(f);
+
         return Task.CompletedTask;
     }
 
