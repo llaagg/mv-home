@@ -2,7 +2,5 @@
 
 var manifest = new Home.HomeManifest();
 
-
-var app = new App();
-await app.Start(manifest);
+await Clients.StartOneD(manifest);
 
