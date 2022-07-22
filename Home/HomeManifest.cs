@@ -7,7 +7,7 @@ using MV.Models;
 
 public class HomeManifest : IManifest, IVerse
 {
-    private IMetaVerse? ctx;
+    private IMetaVerse ctx;
 
     public VerseDefinition Definition()
     {
