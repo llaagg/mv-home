@@ -38,7 +38,15 @@ public class HomeManifest : IManifest, IVerse
 
     public Task Start()
     {
-        this.ctx.Show(new Frame());
+        //1. create UI
+        //2. ask to show it
+
+        var f = new VFrame();
+        f.Add(new Label("Ala"));
+        f.Add(new Label("ma"));
+        f.Add(new Label("kota"));
+
+        this.ctx.Show(f);
         return Task.CompletedTask;
     }
 
