@@ -12,7 +12,7 @@
             "program": "${workspaceFolder}/SDK/SDK/bin/Debug/net6.0/SDK.dll",
             "args": [],
             "cwd": "${workspaceFolder}/SDK/SDK",
-            "console": "internalConsole",
+            "console": "externalTerminal",
             "stopAtEntry": false
         }
     ]
