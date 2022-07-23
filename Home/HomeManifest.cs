@@ -7,7 +7,7 @@ using MV.Models;
 
 public class HomeManifest : IManifest, IVerse
 {
-    private IMetaVerse ctx;
+    private IMetaVerse? Context;
 
     public VerseDefinition Definition()
     {
@@ -27,7 +27,7 @@ public class HomeManifest : IManifest, IVerse
 
     public Task Init(IMetaVerse context)
     {
-        this.ctx = context;
+        this.Context = context;
         return Task.CompletedTask;
     }
 
@@ -40,10 +40,7 @@ public class HomeManifest : IManifest, IVerse
     {
         //1. create UI
         //2. ask to show it
-
         
-        
-
         var f = new VFrame();
         f.Add(new Label("Hello world"));
         f.Add(new Label("ma"));
@@ -55,7 +52,7 @@ public class HomeManifest : IManifest, IVerse
         };
         f.Add(bt);
         
-        this.ctx.Show(f);
+        this.Context.Show(f);
 
         return Task.CompletedTask;
     }
