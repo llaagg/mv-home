@@ -5,7 +5,7 @@ using MV.Forms;
 using MV.Interfaces;
 using MV.Models;
 
-public class HomeManifest : IManifest, IVers
+public class HomeManifest : IManifest, IVerse
 {
     private IMetaVerse? Context;
 
