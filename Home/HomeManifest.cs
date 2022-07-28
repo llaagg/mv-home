@@ -5,7 +5,7 @@ using MV.Forms;
 using MV.Interfaces;
 using MV.Models;
 
-public class HomeManifest : IManifest, IVerse
+public class HomeManifest : IManifest, IVers
 {
     private IMetaVerse? Context;
 
@@ -13,7 +13,7 @@ public class HomeManifest : IManifest, IVerse
     {
         return new VerseDefinition()
         {
-            E=new List<VerseReference>()
+            E = new List<VerseReference>()
             {
                 new VerseReference(){
                     GH="no-where",
