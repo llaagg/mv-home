@@ -1,65 +1,34 @@
-﻿namespace Home;
-
-using System.Threading.Tasks;
-using MV.Forms;
+﻿using System.Collections.Generic;
 using MV.Interfaces;
 using MV.Models;
 
-public class HomeManifest : IManifest, IVerse
+namespace Home
 {
-    private IMetaVerse? Context;
-
-    public VerseDefinition Definition()
+    public class HomeManifest : IManifest
     {
-        return new VerseDefinition()
+        private IMetaVerse Context;
+
+        private HomeVerse _verse = new HomeVerse();
+
+        public VerseDefinition Definition()
         {
-            E = new List<VerseReference>()
+            return new VerseDefinition()
             {
-                new VerseReference(){
-                    GH="no-where",
-                    N= '0',
-                    Name = new I18NString("Watch")
+                E = new List<VerseReference>()
+                {
+                    new VerseReference(){
+                        GH="no-where",
+                        N= '0',
+                        Name = new I18NString("Watch")
+                    },
                 },
-            },
-            Name = new ("Hello world")
-        };
-    }
-
-    public Task Init(IMetaVerse context)
-    {
-        this.Context = context;
-        return Task.CompletedTask;
-    }
-
-    public Task Loop()
-    {
-        return Task.CompletedTask;
-    }
-
-    public Task Start()
-    {
-        //1. create UI
-        //2. ask to show it
+                Name = new I18NString("Hello world")
+            };
+        }
         
-        var f = new VFrame();
-        f.Add(new Label("Hello world"));
-        f.Add(new Label("ma"));
-        f.Add(new Label("kota"));
-        f.Add(new Button("Zed"));
-        var bt = new Button("z");
-        bt.Clicked+=()=>{
-            Console.WriteLine("ok");
-        };
-        f.Add(bt);
-        
-        this.Context.Show(f);
-
-        return Task.CompletedTask;
-    }
-
-    public IVerse Verse()
-    {
-        return this;
+        public IVerse Verse()
+        {
+            return this._verse;
+        }
     }
 }
-
