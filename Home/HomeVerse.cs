@@ -29,15 +29,21 @@ namespace Home
             //2. ask to show it
 
             var dialer = new VFrame();
-            for(int x=0;x<=3;x++)
+            for(int x=0;x<3;x++)
             {
                 var row = new HFrame();
-                for(int y=0;y<=3;y++)
+                for(int y=0;y<3;y++)
                 {
-                    row.Add(new Label($"{x*3 + y}"));
+                    int number = x + (y *3) + 1;
+                    row.Add(new Label($"{number}"));
                 }
                 dialer.Add(row);
             }
+
+            var lastRow = new HFrame();
+            lastRow.Add(new Label($"0"));
+            dialer.Add(lastRow);
+
             dialer.Add(new Button("Close"));
 
             this.Context.Show(dialer);
