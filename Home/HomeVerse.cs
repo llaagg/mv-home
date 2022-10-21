@@ -44,11 +44,17 @@ namespace Home
             lastRow.Add(new Label($"0"));
             dialer.Add(lastRow);
 
-            dialer.Add(new Button("Close"));
+            var b = new Button("Close");
+            b.Clicked += () =>
+            {
+                Context.Show(new Button("a"));
+            };
+            dialer.Add(b);
 
             this.Context.Show(dialer);
 
             return Task.CompletedTask;
         }
+
     }
 }

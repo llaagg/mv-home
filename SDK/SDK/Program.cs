@@ -1,4 +1,4 @@
-﻿using MV.OneD.UI;
+﻿using MV.IDE;
 
 var manifest = new Home.HomeManifest();
 
