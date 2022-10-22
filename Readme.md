@@ -1,4 +1,5 @@
-#Release
+# Release
+
 After starting new project you can simply trigger release to github. This created binary dll that can be downloaded by mv client.
 Relase is triggered automatically on a commit with a version tag in a special format: v0.0.0
 
