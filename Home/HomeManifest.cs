@@ -16,13 +16,18 @@ namespace Home
             {
                 E = new List<VerseReference>()
                 {
-                    new VerseReference(){
-                        GH="no-where",
+                    new VerseReference{
+                        GH="https://github.com/llaagg/mv-home", // self
                         N= '0',
-                        Name = new I18NString("Watch")
+                        Name = new I18NString("Home")
+                    },
+                    new VerseReference{
+                        GH=@"https://github.com/llaagg/mv-doc",
+                        N= '0',
+                        Name = new I18NString("Docs")
                     },
                 },
-                Name = new I18NString("Hello world")
+                Name = new I18NString("Home")
             };
         }
         
