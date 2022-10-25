@@ -7,13 +7,13 @@ namespace Home
 {
     internal class HomeVerse : IVerse
     {
-        private IMetaVerse Context;
+        private IMetaVerseRunner Context;
 
         public HomeVerse()
         {
         }
        
-        public Task Init(IMetaVerse context)
+        public Task Init(IMetaVerseRunner context)
         {
             this.Context = context;
             return Task.CompletedTask;

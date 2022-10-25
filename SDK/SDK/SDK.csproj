@@ -9,7 +9,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Home\Home.csproj" />
-    <ProjectReference Include="..\..\..\mv\libs\MV.Ide\MV.Ide.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
