@@ -7,16 +7,8 @@ namespace Home
 {
     internal class HomeVerse : IVerse
     {
-        private IMetaVerseRunner Context;
-
         public HomeVerse()
         {
-        }
-       
-        public Task Init(IMetaVerseRunner context)
-        {
-            this.Context = context;
-            return Task.CompletedTask;
         }
 
         public Task Loop()

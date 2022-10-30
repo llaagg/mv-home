@@ -8,8 +8,6 @@
     <PackageReference Include="MV" Version="0.9.7" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\MV\libs\MV\MV.csproj" />
-  </ItemGroup>
+
 
 </Project>
