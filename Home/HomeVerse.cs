@@ -7,18 +7,10 @@ namespace Home
 {
     internal class HomeVerse : IVerse
     {
-        private IMetaVerse Context;
-
         public HomeVerse()
         {
         }
        
-        public Task Init(IMetaVerse context)
-        {
-            this.Context = context;
-            return Task.CompletedTask;
-        }
-
         public Task Loop()
         {
             return Task.CompletedTask;
@@ -57,6 +49,12 @@ namespace Home
             return Task.CompletedTask;
         }
 
+        public Task Init(IMetaVerseRunner context)
+        {
+            this.Context = context;
+            return Task.CompletedTask;
+        }
 
+        public IMetaVerseRunner Context { get; set; }
     }
 }

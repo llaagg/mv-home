@@ -1,9 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <PackageReference Include="Pla.Lib" Version="1.0.3" />
-    <PackageReference Include="Pla.Lib.UI" Version="1.0.8" />
-    <PackageReference Include="Pla.Win" Version="1.0.4" />
+    <PackageReference Include="Pla.Lib" Version="1.0.6" />
+    <PackageReference Include="Pla.Lib.UI" Version="1.0.18" />
+    <PackageReference Include="Pla.Win" Version="1.0.6" />
     <PackageReference Include="Terminal.Gui" Version="1.8.2" />
   </ItemGroup>
 
