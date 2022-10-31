@@ -1,3 +1,4 @@
+﻿using System;
 using System.Threading.Tasks;
 using MV.Forms;
 using MV.Interfaces;
@@ -10,46 +11,49 @@ namespace Home
 
         private string _number = "";
 
-        public HomeVerse()
+        
+        public Task Start()
         {
-        }
+            new Framed("Dialer", CreateDialer, this.Context);
+            new Framed("Exits", () =>
+            {
+                return new Label("A");
+            }, this.Context);
 
-        public Task Loop()
-        {
             return Task.CompletedTask;
         }
 
-        public Task Start()
+        private VFrame CreateDialer()
         {
-            //1. create UI
-            //2. ask to show it
-
+            var dialerFrame = new VFrame();
+            
             var topFrame = new HFrame();
             _textLine = new Label();
             topFrame.Add(_textLine);
             topFrame.Add(AddRemoveButton());
-            this.Context.Show(topFrame);
+            dialerFrame.Add(topFrame);
+            
 
             var dialer = new VFrame();
-            for(int x=0;x<3;x++)
+            for (int x = 0; x < 3; x++)
             {
                 var row = new HFrame();
-                for(int y=0;y<3;y++)
+                for (int y = 0; y < 3; y++)
                 {
-                    int number = x + (y *3) + 1;
+                    int number = x + (y * 3) + 1;
                     row.Add(this.AddNumberButton(number));
                 }
+
                 dialer.Add(row);
             }
 
             var lastRow = new HFrame();
-            lastRow.Add(new Label(" "));
+            lastRow.Add(new Label("≣"));
             lastRow.Add(AddNumberButton(0));
             dialer.Add(lastRow);
-            
-            this.Context.Show(dialer);
 
-            return Task.CompletedTask;
+            dialerFrame.Add(dialer);
+            return dialerFrame;
         }
 
         private IElement AddRemoveButton()
@@ -86,5 +90,41 @@ namespace Home
         }
 
         public IMetaVerseRunner Context { get; set; }
+    }
+
+    public class Framed
+    {
+        private readonly IMetaVerseRunner _context;
+        private readonly IElement _element = null;
+        private bool _visible;
+
+        public Framed(string dialer, Func<IElement> createDialer, IMetaVerseRunner context)
+        {
+            _context = context;
+            _element = createDialer();
+
+            var b = new Button(dialer);
+            b.Clicked += () =>
+            {
+                this.Toggle();
+            };
+
+            _context.Show(b);
+
+            b.OnClicked();
+        }
+
+        private void Toggle()
+        {
+            _visible = !_visible;
+            if (this._visible)
+            {
+                _context.Show(_element);
+            }
+            else
+            {
+                _context.Hide(_element);
+            }
+        }
     }
 }
