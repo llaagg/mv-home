@@ -23,11 +23,6 @@ namespace Home
             return Task.CompletedTask;
         }
 
-        private IElement RootFrame()
-        {
-            return new VFrame();
-        }
-
         private VFrame CreateDialer()
         {
             var dialerFrame = new VFrame();
