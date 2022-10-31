@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MV" Version="0.9.7" />
+    <PackageReference Include="MV" Version="0.9.9" />
   </ItemGroup>
 
 

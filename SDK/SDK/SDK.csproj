@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <PackageReference Include="MV" Version="0.9.7" />
-    <PackageReference Include="MV.Ide" Version="0.9.7" />
+    <PackageReference Include="MV" Version="0.9.9" />
+    <PackageReference Include="MV.Ide" Version="0.9.9" />
     <PackageReference Include="Pla.Lib" Version="1.0.6" />
     <PackageReference Include="Pla.Lib.UI" Version="1.0.18" />
     <PackageReference Include="Pla.Win" Version="1.0.6" />

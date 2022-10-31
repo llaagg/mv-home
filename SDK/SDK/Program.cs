@@ -2,7 +2,7 @@
 
 var manifest = new Home.HomeManifest();
 
-await Clients.StartOneD(manifest);
+//await Clients.StartOneD(manifest);
 
-//await Clients.StartTwoD(manifest);
+await Clients.StartTwoD(manifest);
 

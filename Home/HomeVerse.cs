@@ -24,10 +24,11 @@ namespace Home
             //1. create UI
             //2. ask to show it
 
-            _textLine =
-                new Label();
-                //new MV.Forms.Editor();
-            this.Context.Show(_textLine);
+            var topFrame = new HFrame();
+            _textLine = new Label();
+            topFrame.Add(_textLine);
+            topFrame.Add(AddRemoveButton());
+            this.Context.Show(topFrame);
 
             var dialer = new VFrame();
             for(int x=0;x<3;x++)
@@ -42,19 +43,28 @@ namespace Home
             }
 
             var lastRow = new HFrame();
-            lastRow.Add(new Label($"0"));
+            lastRow.Add(new Label(" "));
+            lastRow.Add(AddNumberButton(0));
             dialer.Add(lastRow);
-
-            var b = new Button("Close");
-            b.Clicked += () =>
-            {
-                Context.Show(new Button("a"));
-            };
-            dialer.Add(b);
-
+            
             this.Context.Show(dialer);
 
             return Task.CompletedTask;
+        }
+
+        private IElement AddRemoveButton()
+        {
+            var b = new Button("<-");
+            b.Clicked += () =>
+            {
+                if (_number.Length > 0)
+                {
+                    _number = _number.Substring(0, _number.Length - 1);
+                    this._textLine.Text = _number;
+                    this.Context.Update(this._textLine);
+                }
+            };
+            return b;
         }
 
         private IElement AddNumberButton(int number)
@@ -62,8 +72,9 @@ namespace Home
             var b = new Button(number.ToString());
             b.Clicked += () =>
             {
-                this._textLine.Text = _number + number.ToString();
-                this.Context.Show(this._textLine);
+                _number += number.ToString();
+                this._textLine.Text = _number;
+                this.Context.Update(this._textLine);
             };
             return b;
         }
