@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using MV.Forms;
 using MV.Interfaces;
 
@@ -14,13 +13,19 @@ namespace Home
         
         public Task Start()
         {
-            new Framed("Dialer", CreateDialer, this.Context);
-            new Framed("Exits", () =>
-            {
-                return new Label("A");
-            }, this.Context);
+            var toolbar = new HFrame();
+
+            var framed = new Framed("Dialer", CreateDialer, this.Context, toolbar);
+            var framed1 = new Framed("Exits", () => new Label("A"), this.Context, toolbar);
+
+            this.Context.Show(toolbar);
 
             return Task.CompletedTask;
+        }
+
+        private IElement RootFrame()
+        {
+            return new VFrame();
         }
 
         private VFrame CreateDialer()
@@ -90,41 +95,5 @@ namespace Home
         }
 
         public IMetaVerseRunner Context { get; set; }
-    }
-
-    public class Framed
-    {
-        private readonly IMetaVerseRunner _context;
-        private readonly IElement _element = null;
-        private bool _visible;
-
-        public Framed(string dialer, Func<IElement> createDialer, IMetaVerseRunner context)
-        {
-            _context = context;
-            _element = createDialer();
-
-            var b = new Button(dialer);
-            b.Clicked += () =>
-            {
-                this.Toggle();
-            };
-
-            _context.Show(b);
-
-            b.OnClicked();
-        }
-
-        private void Toggle()
-        {
-            _visible = !_visible;
-            if (this._visible)
-            {
-                _context.Show(_element);
-            }
-            else
-            {
-                _context.Hide(_element);
-            }
-        }
     }
 }

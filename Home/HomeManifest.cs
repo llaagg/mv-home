@@ -6,9 +6,7 @@ namespace Home
 {
     public class HomeManifest : IManifest
     {
-        private IMetaVerseContext Context;
-
-        private HomeVerse _verse = new HomeVerse();
+        private readonly HomeVerse _verse = new HomeVerse();
 
         public VerseDefinition Definition()
         {
